@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>গুরুত্বপূর্ণ আপডেট - নতুন লিংক</title>
+    
+    <!-- মোবাইল ব্রাউজারের জন্য বেসিক ওয়েব অ্যাপ মেটা ট্যাগ -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+        }
+        .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        h2 { 
+            color: #d9534f; 
+            margin-top: 0;
+            margin-bottom: 15px; 
+            font-size: 24px;
+        }
+        p { 
+            color: #444; 
+            font-size: 16px; 
+            line-height: 1.6; 
+            margin-bottom: 25px; 
+        }
+        .link-btn {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            transition: background 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 102, 204, 0.3);
+        }
+        .link-btn:hover { 
+            background-color: #0052a3; 
+        }
+        .install-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .install-btn:hover { 
+            background-color: #218838; 
+        }
+        .install-btn svg { 
+            width: 22px; 
+            height: 22px; 
+            margin-right: 10px; 
+            fill: white; 
+        }
+        .instruction {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="icon">📢</div>
+    <h2>গুরুত্বপূর্ণ আপডেট</h2>
+    
+    <p>পূর্ববর্তী লিংকটি আপডেট করা হয়েছে। অনুগ্রহ করে এখন থেকে এর পরিবর্তে নিচের নতুন লিংকটি ব্যবহার করুন:</p>
+    
+    <!-- নতুন লিংক -->
+    <a href="https://leads.cv-acimotors.com" class="link-btn" target="_blank" rel="noopener noreferrer">
+        leads.cv-acimotors.com
+    </a>
+
+    <p class="instruction">সহজে ব্যবহারের জন্য আপনি চাইলে নতুন লিংকটি আপনার মোবাইলের হোম স্ক্রিনে সেভ করে রাখতে পারেন।</p>
+    
+    <!-- হোম স্ক্রিনে অ্যাড করার বাটন -->
+    <button id="installApp" class="install-btn">
+        <svg viewBox="0 0 24 24"><path d="M17 1H7C5.9 1 5 1.9 5 3V21C5 22.1 5.9 23 7 23H17C18.1 23 19 22.1 19 21V3C19 1.9 18.1 1 17 1ZM12 21C11.4 21 11 20.6 11 20C11 19.4 11.4 19 12 19C12.6 19 13 19.4 13 20C13 20.6 12.6 21 12 21ZM17 18H7V4H17V18Z"/></svg>
+        হোম স্ক্রিনে যুক্ত করুন
+    </button>
+</div>
+
+<script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installApp');
+
+    // ব্রাউজার যদি অটো-ইনস্টল সাপোর্ট করে
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+    });
+
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            // প্রম্পট দেখান
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+        } else {
+            // যদি ব্রাউজার সরাসরি প্রম্পট সাপোর্ট না করে (যেমন আইফোন বা সাধারণ HTML পেজ)
+            alert("হোম স্ক্রিনে যুক্ত করতে:\n\n১. উপরের নীল রঙের লিংকে ক্লিক করে নতুন ওয়েবসাইটে প্রবেশ করুন।\n২. ক্রোমের মেনু (ডানদিকের উপরে ৩টি ডট) থেকে 'Add to Home screen' বা 'Install' অপশনটি নির্বাচন করুন।");
+        }
+    });
+</script>
+
+</body>
+</html>
